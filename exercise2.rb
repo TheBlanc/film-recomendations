@@ -11,6 +11,9 @@ choice = "incomplete"
 
 puts "\nHey, friend. I want to reccomend you a movie based on your preferances.\n\nOn a scale of 1 to 5, how much do you like Documentaries?\n"
 
+
+# A loop for each question to verify the input
+# Then store the input into a variable
 while choice == "incomplete"
   user_documentary = gets.to_i
   if user_documentary <= 5 && user_documentary > 0
@@ -50,11 +53,14 @@ while choice == "incomplete"
   end
 end
 
+# Display the user's choices
 puts "------------------------------"
 puts "Your preferances:"
 puts "Documentary = #{user_documentary}\nDrama = #{user_drama}\nComedy = #{user_comedy}"
 puts "------------------------------"
 
+# Compare the integer values of the user's inputs against one another
+# First based on if they scored something above 4
 if user_drama >= 4 && user_comedy < 4 && user_documentary < 4
   movie_suggestion = drama
 elsif user_drama < 4 && user_comedy >=4 && user_documentary < 4
@@ -70,6 +76,7 @@ elsif user_drama >= 4 && user_comedy < 4 && user_documentary >= 4
 elsif user_drama >= 4 && user_comedy >= 4 && user_documentary >= 4
   movie_suggestion = docudramedy
 
+# If all scores were under 4
 elsif user_drama <= 3 && user_comedy <= 3 && user_documentary <= 3
   if user_drama > user_comedy && user_drama > user_documentary
     movie_suggestion = drama
